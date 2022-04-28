@@ -34,7 +34,7 @@ def train_model():
     ####### Read data
     df = pd.read_csv(os.path.join(dataset_csv_path, 'finaldata.csv'))
     X = df.drop(['corporation'], axis=1)
-    target = df.pop('exited')
+    target = X.pop('exited')
     model.fit(X, target)
     #write the trained model to your workspace in a file called trainedmodel.pkl
     pickle.dump(model, open(os.path.join(model_path, 'trainedmodel.pkl'), 'wb'))
