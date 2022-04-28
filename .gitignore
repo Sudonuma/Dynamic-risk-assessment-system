@@ -131,3 +131,8 @@ dmypy.json
 practicedata/
 sourcedata/
 testdata/
+ingesteddata/
+__MACOSX/
+models/
+practicemodels/
+production_deployment/
