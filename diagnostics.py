@@ -17,13 +17,13 @@ test_data_path = os.path.join(config['test_data_path'])
 prod_deployment_path = os.path.join(config['prod_deployment_path']) 
 
 ##################Function to get model predictions
-def model_predictions():
+def model_predictions(X):
     #read the deployed model and a test dataset, calculate predictions
     
     # read test dataset
-    X = pd.read_csv(os.path.join(test_data_path, 'testdata.csv')) 
-    X = X.drop(['corporation'], axis=1)
-    X = X.drop(['exited'], axis=1)
+    # X = pd.read_csv(os.path.join(test_data_path, 'testdata.csv')) 
+    # X = X.drop(['corporation'], axis=1)
+    # X = X.drop(['exited'], axis=1)
     # load model from the deployment directory
     model = pickle.load(open(os.path.join(prod_deployment_path, 'trainedmodel.pkl'), 'rb'))
 
@@ -90,18 +90,22 @@ def outdated_packages_list():
     #     )
 
     dependencies = subprocess.run(
-        ['pip-outdated','requirements.txt'])
-    # with open('outdated.txt', 'wb') as f:
-    #     f.write(dependencies)
+        ['pip-outdated','requirements.txt'],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        encoding='utf-8')
 
-    
-    return dependencies
+    dep = dependencies.stdout
+    return dep
 
 if __name__ == '__main__':
+    X = pd.read_csv(os.path.join(test_data_path, 'testdata.csv')) 
+    X = X.drop(['corporation'], axis=1)
+    X = X.drop(['exited'], axis=1)
     # model_predictions()
     # dataframe_summary()
     # missing_data()
-    # execution_time()
+    # print(type(execution_time()))
     outdated_packages_list()
 
 
