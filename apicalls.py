@@ -13,10 +13,6 @@ URL = "http://127.0.0.1:8000/"
 
 # Call each API endpoint and store the responses
 response1 = requests.get(URL+'/prediction?filename=data.csv').content
-# response1 = requests.post(
-#     f'{URL}/prediction',
-#     json={
-#         'filename': './testdata/testdata.csv'}).text
 
 
 response2 = requests.get(URL+'/scoring').content

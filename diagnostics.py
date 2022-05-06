@@ -44,7 +44,7 @@ def dataframe_summary():
         mean = df[column].mean()
         median = df[column].median()
         stdv = df[column].std()
-        # stats.append()
+        # .appnd()
         stats[column] = {'mean': mean, 'median': median, 'stdv': stdv}
 
     return stats
