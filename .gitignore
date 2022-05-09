@@ -128,11 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-practicedata/
-sourcedata/
-testdata/
 ingesteddata/
 __MACOSX/
-models/
-practicemodels/
-production_deployment/
